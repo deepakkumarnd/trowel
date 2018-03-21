@@ -3,14 +3,26 @@
   <head>
     <title>Trowel</title>
     <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <%= render 'shared/navbar' %>
+
+    <div class="container">
+
+      <% if notice.present? %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+
+      <% if alert.present? %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>

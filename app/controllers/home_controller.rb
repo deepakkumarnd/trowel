@@ -1,5 +1,10 @@
 class HomeController < ApplicationController
+
+  before_action :authenticate_user!, only: [:index]
+
   def index
-    render plain: 'Trowel'
+  end
+
+  def settings
   end
 end
