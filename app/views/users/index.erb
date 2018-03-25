@@ -20,8 +20,8 @@
       <tr>
         <td><%= link_to(user.email, user_path(user)) %></td>
         <td><%= user.sign_in_count %></td>
-        <td><%= user.current_sign_in_at %></td>
-        <td><%= user.last_sign_in_at %></td>
+        <td><%= format_time(user.current_sign_in_at) %></td>
+        <td><%= format_time(user.last_sign_in_at) %></td>
         <td><%= user.current_sign_in_ip %></td>
         <td><%= user.last_sign_in_ip %></td>
         <td>

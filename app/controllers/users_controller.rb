@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
   def destroy
     @user.mark_as_deleted!
-    redirect_to :index
+    redirect_to users_path, alert: "User <#{@user.email}> deleted successfully."
   end
 
   private

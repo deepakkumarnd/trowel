@@ -4,7 +4,7 @@
 </div>
 
 <p>
-  Email <b><%= @user.email %></b> created on <%= @user.created_at %>
+  Email <b><%= @user.email %></b> created on <%= @user.created_at.strftime('%d-%b-%Y') %>
 </p>
 
 <p>
@@ -13,14 +13,16 @@
 
 <p>
   <div>Current sign in details </div>
-  <div>Current sign in at <b><%= @user.current_sign_in_at %></b></div>
-  <div>Current sign in ip <b><%= @user.current_sign_in_ip %></b></div>
+  <div>Sign in <b><%= format_time(@user.current_sign_in_at) %></b> from <b><%= @user.current_sign_in_ip %></b></div>
 </p>
 
 <p>
   <div>Last sign in details </div>
-  <div>Last sign in at <b><%= @user.last_sign_in_at %></b></div>
-  <div>Last sign in ip <b><%= @user.last_sign_in_ip %></b></div>
+  <div>Last sign in <b><%= format_time(@user.last_sign_in_at) %></b> from <b><%= @user.last_sign_in_ip %></b> </div>
+</p>
+
+<p>
+  <%= link_to 'Delete this user', user_path(@user), class: 'btn btn-default btn-danger', method: :delete, data: { confirm: 'Are you sure want to delete this user ?' } %>
 </p>
 
 
