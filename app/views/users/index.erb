@@ -1,13 +1,21 @@
-<table>
+<div class="pull-right">
+  <%= link_to 'Back', settings_path, class: 'btn btn-default' %>
+  <%= link_to 'Add', new_user_path, class: 'btn btn-default' %>
+</div>
+
+<table class="table table-striped" >
+  <thead>
   <tr>
-    <td>Email</td>
-    <td>Sign in count</td>
-    <td>Current Sign In At</td>
-    <td>Last Sign In At</td>
-    <td>Current Sign In IP</td>
-    <td>Last Sign In IP</td>
-    <td>Actions</td>
+    <th>Email</th>
+    <th>Sign in count</th>
+    <th>Current Sign In At</th>
+    <th>Last Sign In At</th>
+    <th>Current Sign In IP</th>
+    <th>Last Sign In IP</th>
+    <th>Actions</th>
   </tr>
+  </thead>
+  <tbody>
   <% @users.each do |user| %>
       <tr>
         <td><%= link_to(user.email, user_path(user)) %></td>
@@ -16,7 +24,10 @@
         <td><%= user.last_sign_in_at %></td>
         <td><%= user.current_sign_in_ip %></td>
         <td><%= user.last_sign_in_ip %></td>
-        <td>Edit|Delete</td>
+        <td>
+          <%= link_to 'Edit', edit_user_path(user) %>
+        </td>
       </tr>
   <% end %>
+  </tbody>
 </table>

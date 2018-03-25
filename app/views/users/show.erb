@@ -1,0 +1,27 @@
+<div class="pull-right">
+  <%= link_to 'Back', users_path, class: 'btn btn-default' %>
+  <%= link_to 'Edit', edit_user_path(@user), class: 'btn btn-default' %>
+</div>
+
+<p>
+  Email <b><%= @user.email %></b> created on <%= @user.created_at %>
+</p>
+
+<p>
+  Sign in count <b><%= @user.sign_in_count %></b>
+</p>
+
+<p>
+  <div>Current sign in details </div>
+  <div>Current sign in at <b><%= @user.current_sign_in_at %></b></div>
+  <div>Current sign in ip <b><%= @user.current_sign_in_ip %></b></div>
+</p>
+
+<p>
+  <div>Last sign in details </div>
+  <div>Last sign in at <b><%= @user.last_sign_in_at %></b></div>
+  <div>Last sign in ip <b><%= @user.last_sign_in_ip %></b></div>
+</p>
+
+
+

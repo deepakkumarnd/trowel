@@ -14,12 +14,20 @@
 
     <div class="container">
 
-      <% if notice.present? %>
-        <p class="notice"><%= notice %></p>
+      <% if alert.present? %>
+        <div class="alert alert-error">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <h4>Alert!</h4>
+          <%= alert %>
+        </div>
       <% end %>
 
-      <% if alert.present? %>
-        <p class="alert"><%= alert %></p>
+      <% if notice.present? %>
+        <div class="alert alert-block">
+          <button type="button" class="close" data-dismiss="alert">&times;</button>
+          <h4>Notice</h4>
+          <%= notice %>
+        </div>
       <% end %>
 
       <%= yield %>

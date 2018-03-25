@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :load_user, only: [:show, :edit, :update, :destroy]
+
   def index
     @users = User.all
   end
@@ -11,6 +13,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(create_user_params)
 
+    @user.password = @user.password_confirmation = SecureRandom.hex[0..8]
+
     if @user.save
       redirect_to @user
     else
@@ -19,11 +23,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def update
@@ -37,5 +39,19 @@ class UsersController < ApplicationController
   def destroy
     @user.mark_as_deleted!
     redirect_to :index
+  end
+
+  private
+
+  def create_user_params
+    params.require(:user).permit(:email)
+  end
+
+  def update_user_params
+    params.require(:user).permit(:email)
+  end
+
+  def load_user
+    @user = User.find(params[:id])
   end
 end
